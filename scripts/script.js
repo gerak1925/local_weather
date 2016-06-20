@@ -1,3 +1,5 @@
+var latitude, longitude;
+
 function geoFind() {
 	var output = document.getElementById("content");
 
@@ -7,8 +9,8 @@ function geoFind() {
 	}
 
 	function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
+    latitude  = position.coords.latitude;
+    longitude = position.coords.longitude;
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
