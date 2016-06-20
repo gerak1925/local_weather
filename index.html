@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Local Weather</title>
-	<link rel="stylesheet" type="text/css" href="styles/basic.css">
-	<script src="scripts/script.js"></script>
-</head>
-<body>
+<html lang="en">
+	<head>
+		<title>Local Weather</title>
 
-</body>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="styles/basic.css">
+		<script src="scripts/script.js"></script>
+	</head>
+	<body>
+		<div class="cont">
+			<div id="topCont">
+				<h1 id="prime">Free Code Camp</h1>
+				<h2 id="secondary">Weather App</h2>
+			</div>
+			<div id="botCont">
+				<div id="content">
+
+				</div>
+				<button class="btn btn-default" onclick="geoFind()">Generate Weather</button>
+			</div>
+		</div>
+	</body>
 </html>
