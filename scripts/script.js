@@ -13,6 +13,7 @@ function geoFind() {
     longitude = position.coords.longitude;
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    output.innerHTML = '<p>api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '</p>';
 
     // var img = new Image();
     // img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
