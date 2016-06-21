@@ -1,30 +1,48 @@
-var latitude, longitude;
-
-function geoFind() 
+$(document).ready(function()
 {
 
-	var output = document.getElementById("content");
+	var latitude, longitude;
 
-	if (!navigator.geolocation) 
+	function convertion()
 	{
-    	output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    	return;
+
 	}
 
-	function success(position) 
+	function processJSON(url)
 	{
-    	latitude  = position.coords.latitude;
-    	longitude = position.coords.longitude;
+		$.getJSON(url, function(jsonObj)
+		{
+			$('#content').html("<p>" + jsonObj.main.temp.toString() + "")
+		}
+	}
 
-    	output.innerHTML = '<p>api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=5b1a0c598f588ad14577a6cfc89433b2</p>';
-	};
-
-	function error() 
+	function geoFind() 
 	{
-    	output.innerHTML = "Unable to retrieve your location";
-    };
+		var output = document.getElementById("content");
 
-    output.innerHTML = "<p>Locating…</p>";
+		if (!navigator.geolocation) 
+		{
+	    	output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+	    	return;
+		}
 
-    navigator.geolocation.getCurrentPosition(success, error);
-}
+		function success(position) 
+		{
+	    	lat  = position.coords.latitude;
+	    	lon = position.coords.longitude;
+
+	    	var url = 'api.openweathermap.org/data/2.5/weather?lat=' + lat.toString() + '&lon=' + lon.toString() + '&APPID=5b1a0c598f588ad14577a6cfc89433b2';
+
+	    	processJSON(url);
+		};
+
+		function error() 
+		{
+	    	output.innerHTML = "Unable to retrieve your location";
+	    };
+
+	    output.innerHTML = "<p>Locating…</p>";
+
+	    navigator.geolocation.getCurrentPosition(success, error);
+	}
+});
