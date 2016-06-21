@@ -12,7 +12,11 @@ $(document).ready(function()
 	{
 		$.getJSON(url, function(jsonObj)
 		{
-			$('#content').html("<p>" + jsonObj.main.temp.toString() + "")
+			var temper = parseFloat(jsonObj.main.temp) - 273.15;
+
+			$('#content').html("<p>" + temper.toString() + " <span id="unit" onclick="conversion()">Celsius</span></p>");
+			$('#content').append("<p>" + jsonObj.weather[0].description + "</p>");
+			$('#content').append("<p>" + jsonObj.main.humidity + " humidity</p>");
 		}
 	}
 
