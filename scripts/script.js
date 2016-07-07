@@ -7,14 +7,14 @@ function convertion()
 
 function processJSON(url)
 {
-	$.getJSON(url, function(jsonObj)
+	$.getJSON(url, function(data)
 	{
-		var data = JSON.parse(jsonObj);
-		var temper = parseFloat(data.main.temp) - 273.15;
+		var obj = JSON.parse(data);
+		var temper = parseFloat(obj.main.temp) - 273.15;
 
 		$('#content').html('<p>' + temper.toString() + ' <span id="unit">Celsius</span></p>');
-		$('#content').append("<p>" + data.weather[0].description + "</p>");
-		$('#content').append("<p>" + data.main.humidity + " humidity</p>");
+		$('#content').append("<p>" + obj.weather[0].description + "</p>");
+		$('#content').append("<p>" + obj.main.humidity + " humidity</p>");
 	});
 }
 
@@ -34,7 +34,7 @@ function geoFind()
 	    lon = position.coords.longitude;
 
 	    var url = "api.openweathermap.org/data/2.5/weather?lat=" + lat.toString() + "&lon=" + lon.toString() + "&APPID=5b1a0c598f588ad14577a6cfc89433b2";
-	    // $('#content').html('<p>' + url + '</p>'); This line is just to check if the API link is ok.
+	    // $('#content').html('<p>' + url + '</p>'); This line is here just to check if the API link is ok.
 
 	    processJSON(url);
 	};
