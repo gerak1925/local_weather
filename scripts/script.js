@@ -1,4 +1,4 @@
-var latitude, longitude;
+var lat, lon;
 var url = "";
 
 function convertion()
