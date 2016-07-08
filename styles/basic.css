@@ -4,6 +4,7 @@
 	color: #000000;
 }
 #topCont {
+	padding-top: 0;
 	background-color: #dbdbdb;
 	height: auto;
 	border-bottom: 1px solid black;
@@ -11,15 +12,11 @@
 }
 #botCont {
 	background-color: #e9e9e9;
-	height: 80vh;
 	text-align: center;
 }
 
 h1, h2 {
 	font-weight: bold;
-}
-h2 {
-	padding-bottom: 10px;
 }
 
 #content {
