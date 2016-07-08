@@ -7,20 +7,23 @@ function convertion()
 
 function processJSON(url)
 {
-	$.getJSON(url, function(data)
+	$.getJSON(url, function(obj)
 	{
-		var obj = JSON.parse(data);
 		var temper = parseFloat(obj.main.temp) - 273.15;
+		var weatherIcon = 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
 
 		$('#content').html('<p>' + temper.toString() + ' <span id="unit">Celsius</span></p>');
 		$('#content').append("<p>" + obj.weather[0].description + "</p>");
 		$('#content').append("<p>" + obj.main.humidity + " humidity</p>");
+		$('#content').append('<p><img src="' + weatherIcon + '" /></p>');
 	});
 }
 
 function geoFind()
 {
 	var output = document.getElementById("content");
+
+	$('button').hide();
 
 	if (!navigator.geolocation) 
 	{
@@ -49,4 +52,4 @@ function geoFind()
 	navigator.geolocation.getCurrentPosition(success, error);
 }
 
-$('button').on('click', geoFind());
+$('button').on('click',geoFind);
