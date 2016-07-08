@@ -1,9 +1,17 @@
-body {
-	background-color: #3D3A42;
+#cont {
+	text-align: center;
+	height: 100vh;
 	color: #000000;
 }
-
-.cont {
+#topCont {
+	background-color: #dbdbdb;
+	height: auto;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+#botCont {
+	background-color: #e9e9e9;
+	height: 80vh;
 	text-align: center;
 }
 
@@ -11,7 +19,6 @@ h1, h2 {
 	font-weight: bold;
 }
 h2 {
-	border-bottom: 1px solid black;
 	padding-bottom: 10px;
 }
 

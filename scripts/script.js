@@ -1,4 +1,5 @@
 var latitude, longitude;
+var url = "";
 
 function convertion()
 {
@@ -36,10 +37,9 @@ function geoFind()
 	    lat  = position.coords.latitude;
 	    lon = position.coords.longitude;
 
-	    var url = "api.openweathermap.org/data/2.5/weather?lat=" + lat.toString() + "&lon=" + lon.toString() + "&APPID=5b1a0c598f588ad14577a6cfc89433b2";
+	    url = "api.openweathermap.org/data/2.5/weather?lat=" + lat.toString() + "&lon=" + lon.toString() + "&APPID=5b1a0c598f588ad14577a6cfc89433b2";
 	    // $('#content').html('<p>' + url + '</p>'); This line is here just to check if the API link is ok.
 
-	    processJSON(url);
 	};
 
 	function error() 
@@ -53,3 +53,4 @@ function geoFind()
 }
 
 $('button').on('click',geoFind);
+processJSON(url);
