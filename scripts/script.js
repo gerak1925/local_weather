@@ -9,22 +9,40 @@ function convertion()
 function processJSON(url)
 {
 	alert(url);
-	var jqxhr = $.getJSON(url, function(data) {
-		var obj = data;
-		var temper = parseFloat(obj.main.temp) - 273.15;
-		var weatherIcon = 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
+	// var jqxhr = $.getJSON(url, function(data) {
+	// 	var obj = data;
+	// 	var temper = parseFloat(obj.main.temp) - 273.15;
+	// 	var weatherIcon = 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
 
-		console.dir(obj);
+	// 	console.dir(obj);
 
-		$('#content').html('<p>' + temper.toString() + ' <span id="unit">Celsius</span></p>');
-		$('#content').append("<p>" + obj.weather[0].description + "</p>");
-		$('#content').append("<p>" + obj.main.humidity + " humidity</p>");
-		$('#content').append('<p><img src="' + weatherIcon + '" /></p>');
-	})
-		.fail(function( jqxhr, textStatus, error ) 
-			{ 
-				var err = textStatus + ", " + error; console.log( "Request Failed: " + err ); 
-			});
+	// 	$('#content').html('<p>' + temper.toString() + ' <span id="unit">Celsius</span></p>');
+	// 	$('#content').append("<p>" + obj.weather[0].description + "</p>");
+	// 	$('#content').append("<p>" + obj.main.humidity + " humidity</p>");
+	// 	$('#content').append('<p><img src="' + weatherIcon + '" /></p>');
+	// })
+	// 	.fail(function( jqxhr, textStatus, error ) 
+	// 		{ 
+	// 			var err = textStatus + ", " + error; console.log( "Request Failed: " + err ); 
+	// 		});
+
+	$.ajax({
+		type: "GET",
+		url: url,
+		dataType: "json",
+		success: function (obj) {
+			var temper = parseFloat(obj.main.temp) - 273.15;
+			var weatherIcon = 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
+
+			$('#content').html('<p>' + temper.toString() + ' <span id="unit">Celsius</span></p>');
+			$('#content').append("<p>" + obj.weather[0].description + "</p>");
+			$('#content').append("<p>" + obj.main.humidity + " humidity</p>");
+			$('#content').append('<p><img src="' + weatherIcon + '" /></p>');
+		},
+		error: function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Error: " + errorThrown);
+		}
+	});
 }
 
 function geoFind()
